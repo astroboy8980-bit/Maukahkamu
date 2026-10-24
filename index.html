@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070a1f">
+<title>Hei Kamuuu!</title>
+<style>
+:root{
+  --accent:#ffb6d0;
+  --glow:color-mix(in srgb,var(--accent) 45%,transparent);
+  --ink:#fff;--soft:rgba(255,255,255,.78);
+  --font:ui-rounded,"SF Pro Rounded","Nunito","Quicksand","Trebuchet MS","Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--ink);background:#070a1f;overflow-x:hidden;line-height:1.5}
+
+/* ===== Langit malam (fixed) ===== */
+.world{position:fixed;inset:0;z-index:-1;overflow:hidden;background:linear-gradient(180deg,#04061a 0%,#0c1638 52%,#2b2150 100%)}
+.photo{position:absolute;inset:-4%;background:center/cover no-repeat;opacity:0;transition:opacity 1.4s}
+.photo.ok{opacity:.8}
+.moon{position:absolute;top:7%;right:-6%;width:60vmin;height:60vmin;border-radius:50%;background:radial-gradient(circle,rgba(255,225,240,.28),rgba(255,225,240,0) 68%)}
+.cloud{position:absolute;height:90px;border-radius:50%;background:rgba(150,160,215,.14);filter:blur(22px);animation:drift 60s linear infinite}
+.cloud.c1{width:70vw;top:18%;left:-30vw}
+.cloud.c2{width:55vw;top:42%;left:-50vw;animation-duration:85s;animation-delay:-30s}
+@keyframes drift{to{transform:translateX(170vw)}}
+.palms{position:absolute;inset:auto 0 -2px 0;height:70vh;pointer-events:none;will-change:transform}
+.palms svg{position:absolute;bottom:0;height:100%;fill:#04060f;stroke:#04060f}
+.palms .pl{left:-12%}
+.palms .pr{right:-22%;height:78%;transform:scaleX(-1);opacity:.92}
+.stars span{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;animation:tw 3.5s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.15}50%{opacity:.95}}
+.veil{position:absolute;inset:0;background:linear-gradient(rgba(2,4,16,.5),rgba(2,4,16,.38))}
+
+/* ===== Section dasar ===== */
+section{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:72px 22px;position:relative}
+.wrap{width:min(100%,460px)}
+.rv{opacity:0;transform:translateY(18px);transition:opacity 1.3s ease,transform 1.3s ease}
+.rv.in{opacity:1;transform:none}
+
+/* ===== Hero ===== */
+.char{position:relative;width:min(58vw,230px);margin:0 auto 22px;animation:fadeUp 1.4s ease both}
+.char::before{content:"";position:absolute;left:50%;top:48%;width:135%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.42),rgba(255,255,255,.12) 52%,rgba(255,255,255,0) 72%);animation:glow 4.5s ease-in-out infinite}
+.char svg,.char img{position:relative;width:100%;height:auto;display:block;filter:drop-shadow(0 16px 14px rgba(0,0,0,.45));animation:float 5s ease-in-out infinite}
+@keyframes glow{0%,100%{opacity:.75;transform:translate(-50%,-50%) scale(.96)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.05)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+h1{font-size:clamp(46px,14vw,78px);font-weight:800;line-height:1.05;letter-spacing:-.5px;text-shadow:0 0 26px var(--glow),0 3px 8px rgba(0,0,0,.5);animation:fadeUp 1.4s .35s ease both}
+.ask{margin-top:14px;font-size:clamp(18px,5vw,22px);font-weight:700;animation:fadeUp 1.4s .7s ease both}
+.scroll{margin-top:10px;font-size:15px;font-style:italic;color:var(--soft);animation:fadeUp 1.4s 1s ease both}
+.down{margin:26px auto 0;width:58px;height:58px;border-radius:50%;border:1.8px solid rgba(255,255,255,.7);background:rgba(255,255,255,.08);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;cursor:pointer;display:grid;place-items:center;animation:fadeUp 1.4s 1.3s ease both}
+.down svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateY(-3px)}50%{transform:translateY(5px)}}
+button:focus-visible{outline:3px solid #ffe08a;outline-offset:3px}
+
+/* ===== Pembuka perasaan ===== */
+.say{font-size:clamp(21px,6vw,27px);font-weight:700;line-height:1.5;text-shadow:0 2px 10px rgba(0,0,0,.45)}
+.say + .say{margin-top:38px}
+.deco{position:absolute;pointer-events:none;fill:var(--accent);opacity:.8;animation:bob 6s ease-in-out infinite}
+.deco.d1{width:26px;top:17%;left:12%}.deco.d2{width:18px;top:30%;right:14%;animation-delay:1.2s;fill:#fff}
+.deco.d3{width:22px;bottom:22%;left:18%;animation-delay:2.4s}.deco.d4{width:16px;bottom:14%;right:16%;animation-delay:3.2s;fill:#fff}
+.deco.d5{width:20px;top:46%;right:7%;animation-delay:.6s}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-12px) rotate(14deg)}}
+
+/* ===== Surat ===== */
+.card{padding:30px 24px 26px;border-radius:28px;text-align:left;background:rgba(255,255,255,.13);border:1.5px solid rgba(255,255,255,.34);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 18px 50px rgba(0,0,0,.4),0 0 0 6px color-mix(in srgb,var(--accent) 16%,transparent)}
+.to{font-weight:800;font-size:17px;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.to svg{width:18px;fill:var(--accent)}
+.card p{font-size:17px;line-height:1.75;font-weight:600;margin-bottom:18px}
+.card p:last-child{margin-bottom:0}
+
+/* ===== Interaksi ===== */
+.q{font-size:clamp(22px,6.2vw,28px);font-weight:800;line-height:1.35;text-shadow:0 0 22px var(--glow)}
+.choices{display:flex;flex-direction:column;gap:14px;margin-top:26px}
+.btn{padding:16px 22px;border-radius:999px;border:1.8px solid rgba(255,255,255,.75);font:800 17px/1.2 var(--font);color:#fff;cursor:pointer;touch-action:manipulation;
+  background:rgba(255,255,255,.1);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:transform .15s,background .25s}
+.btn.main{background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 80%,#fff),color-mix(in srgb,var(--accent) 80%,#ff5c8a));color:#3a1230;border-color:#fff;box-shadow:0 6px 24px var(--glow)}
+.btn:active{transform:scale(.97)}
+.panel{margin-top:22px;padding:20px;border-radius:24px;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.3);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);text-align:left;animation:fadeUp .8s ease both}
+.panel label{font-weight:700;font-size:15px;color:var(--soft)}
+textarea{width:100%;min-height:130px;margin-top:10px;padding:14px;border-radius:16px;border:1.5px solid rgba(255,255,255,.4);background:rgba(4,6,26,.55);color:#fff;font:600 16px/1.55 var(--font);resize:vertical}
+textarea::placeholder{color:rgba(255,255,255,.5)}
+textarea:focus{outline:3px solid color-mix(in srgb,var(--accent) 70%,transparent);border-color:var(--accent)}
+.row{display:flex;align-items:center;gap:12px;margin-top:14px;flex-wrap:wrap}
+.row .btn{padding:13px 22px;font-size:16px}
+.status{font-size:14px;font-weight:700;color:var(--accent)}
+.note{margin-top:10px;font-size:13px;color:var(--soft)}
+.kind{font-size:18px;font-weight:700;line-height:1.65;text-align:center}
+
+/* ===== Penutup ===== */
+.thanks{font-size:clamp(23px,6.6vw,30px);font-weight:800;line-height:1.35;text-shadow:0 0 24px var(--glow)}
+.bye{margin-top:18px;font-size:clamp(18px,5vw,21px);font-weight:700;color:var(--soft)}
+.from{margin-top:34px;font-size:20px;font-weight:800;color:var(--accent)}
+.again{margin-top:30px}
+.fl{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.fl span{position:absolute;bottom:-40px;color:var(--accent);opacity:0;animation:rise linear infinite}
+@keyframes rise{0%{transform:translate(0,0) scale(.7);opacity:0}15%{opacity:.8}100%{transform:translate(var(--dx),-105vh) scale(1.1);opacity:0}}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition-duration:.01s!important}
+  .rv{opacity:1;transform:none}.fl{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="world" aria-hidden="true">
+  <div class="photo" id="photo"></div>
+  <div class="moon"></div>
+  <div class="stars" id="stars"></div>
+  <div class="cloud c1"></div><div class="cloud c2"></div>
+  <div class="palms" id="palms">
+    <svg class="pl" viewBox="0 0 400 520" preserveAspectRatio="xMinYMax meet">
+      <defs>
+        <path id="fr" d="M0 0C42-44 108-34 152 34C102 4 48-6 0 0Z" stroke="none"/>
+        <g id="palm">
+          <path d="M150 520C158 410 178 300 205 196" fill="none" stroke-width="15" stroke-linecap="round"/>
+          <g transform="translate(205 196)">
+            <use href="#fr" transform="rotate(-172)"/><use href="#fr" transform="rotate(-140)"/><use href="#fr" transform="rotate(-108)"/>
+            <use href="#fr" transform="rotate(-72) scale(.9)"/><use href="#fr" transform="rotate(-36)"/><use href="#fr" transform="rotate(-4)"/>
+            <use href="#fr" transform="rotate(28) scale(.85)"/><use href="#fr" transform="rotate(-205) scale(.8)"/>
+            <circle cx="0" cy="8" r="9"/><circle cx="14" cy="12" r="8"/>
+          </g>
+        </g>
+      </defs>
+      <use href="#palm"/>
+    </svg>
+    <svg class="pr" viewBox="0 0 400 520" preserveAspectRatio="xMinYMax meet"><use href="#palm"/></svg>
+  </div>
+  <div class="veil"></div>
+</div>
+
+<!-- 1. Pembuka -->
+<section id="s1">
+  <div class="wrap">
+    <div class="char" id="char" role="img" aria-label="Karakter lucu putih bertelinga hitam memegang bunga mawar">
+      <svg viewBox="0 0 200 232" aria-hidden="true">
+        <ellipse cx="100" cy="219" rx="52" ry="8" fill="rgba(0,0,0,.3)" stroke="none"/>
+        <ellipse cx="100" cy="162" rx="50" ry="52" fill="#fff" stroke="#dfe3f2" stroke-width="1.5"/>
+        <ellipse cx="76" cy="211" rx="18" ry="10" fill="#1a1d2e" stroke="none"/><ellipse cx="124" cy="211" rx="18" ry="10" fill="#1a1d2e" stroke="none"/>
+        <circle cx="50" cy="56" r="21" fill="#1a1d2e" stroke="none"/><circle cx="150" cy="56" r="21" fill="#1a1d2e" stroke="none"/>
+        <circle cx="50" cy="58" r="10" fill="#3b4062" stroke="none"/><circle cx="150" cy="58" r="10" fill="#3b4062" stroke="none"/>
+        <ellipse cx="100" cy="96" rx="63" ry="54" fill="#fff" stroke="#dfe3f2" stroke-width="1.5"/>
+        <ellipse cx="76" cy="94" rx="7" ry="9" fill="#1a1d2e" stroke="none"/><ellipse cx="124" cy="94" rx="7" ry="9" fill="#1a1d2e" stroke="none"/>
+        <circle cx="78.5" cy="90" r="2.6" fill="#fff" stroke="none"/><circle cx="126.5" cy="90" r="2.6" fill="#fff" stroke="none"/>
+        <ellipse cx="56" cy="111" rx="12" ry="7.5" fill="#ffb3cc" stroke="none" opacity=".95"/><ellipse cx="144" cy="111" rx="12" ry="7.5" fill="#ffb3cc" stroke="none" opacity=".95"/>
+        <ellipse cx="100" cy="102" rx="5.5" ry="4" fill="#1a1d2e" stroke="none"/>
+        <path d="M91 111q9 9 18 0" fill="none" stroke="#1a1d2e" stroke-width="2.6" stroke-linecap="round"/>
+        <path d="M100 146V196" stroke="#3f9a62" stroke-width="5" stroke-linecap="round"/>
+        <path d="M100 178q-20-4-24-18q18 0 24 18Z" fill="#4cb273" stroke="none"/>
+        <circle cx="100" cy="136" r="16" fill="#ff5c8a" stroke="none"/>
+        <path d="M100 136m-8 2a9 9 0 1 1 9 7M100 132a4.5 4.5 0 1 1 4 5" fill="none" stroke="#c92f61" stroke-width="2.4" stroke-linecap="round"/>
+        <ellipse cx="76" cy="164" rx="12" ry="19" fill="#fff" stroke="#dfe3f2" stroke-width="1.5" transform="rotate(-24 76 164)"/>
+        <ellipse cx="124" cy="164" rx="12" ry="19" fill="#fff" stroke="#dfe3f2" stroke-width="1.5" transform="rotate(24 124 164)"/>
+      </svg>
+    </div>
+    <h1 id="hTitle">Hei Kamuuu!</h1>
+    <p class="ask">Aku boleh jujur engga nih? ☺️</p>
+    <p class="scroll">Scroll terus ke bawah ya :)</p>
+    <button class="down" id="down" type="button" aria-label="Scroll ke bawah">
+      <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+  </div>
+</section>
+
+<!-- 2. Pembuka perasaan -->
+<section id="s2">
+  <svg class="deco d1" viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.800-8 11-8 11Z"/></svg>
+  <svg class="deco d2" viewBox="0 0 24 24"><path d="M12 1l2.600 7.400L22 10l-6 4.600L18 22l-6-4.200L6 22l2-7.400L2 10l7.400-1.600Z"/></svg>
+  <svg class="deco d3" viewBox="0 0 24 24"><path d="M12 2c4 3 6 7 3 11-1 1.500-2 2.400-3 3-1-.6-2-1.500-3-3-3-4-1-8 3-11Z" transform="rotate(25 12 12)"/></svg>
+  <svg class="deco d4" viewBox="0 0 24 24"><path d="M12 1l2.600 7.400L22 10l-6 4.600L18 22l-6-4.200L6 22l2-7.400L2 10l7.400-1.600Z"/></svg>
+  <svg class="deco d5" viewBox="0 0 24 24"><path d="M12 21s-8-5.200-8-11a4.600 4.600 0 0 1 8-3 4.600 4.600 0 0 1 8 3c0 5.800-8 11-8 11Z"/></svg>
+  <div class="wrap">
+    <p class="say rv" data-d="0">Sebenernya ada sesuatu yang udah lama pengen aku sampein ke kamu...</p>
+    <p class="say rv" data-d="1.8">Aku cuma bingung harus mulai dari mana.</p>
+  </div>
+</section>
+
+<!-- 3. Surat -->
+<section id="s3">
+  <div class="wrap">
+    <article class="card rv" id="letter">
+      <div class="to"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.200-8-11a4.600 4.600 0 0 1 8-3 4.600 4.600 0 0 1 8 3c0 5.800-8 11-8 11Z"/></svg><span id="toLine"></span></div>
+    </article>
+  </div>
+</section>
+
+<!-- 4. Interaksi -->
+<section id="s4">
+  <div class="wrap">
+    <h2 class="q rv">Setelah baca ini, kamu mau bilang sesuatu ke aku nggak? 💌</h2>
+    <div class="choices rv" data-d=".4">
+      <button class="btn main" id="yes" type="button">Aku mau jawab 💗</button>
+      <button class="btn" id="think" type="button">Aku mau pikir-pikir dulu 🌷</button>
+    </div>
+    <div class="panel" id="replyBox" hidden>
+      <label for="reply">Tulis balasanmu di sini</label>
+      <textarea id="reply" placeholder="Ketik apa pun yang ingin kamu sampaikan..."></textarea>
+      <div class="row">
+        <button class="btn main" id="copy" type="button">Salin balasan</button>
+        <span class="status" id="status" role="status"></span>
+      </div>
+      <p class="note">Balasanmu tidak dikirim ke mana pun. Salin, lalu kirim sendiri ya.</p>
+    </div>
+    <div class="panel" id="thinkBox" hidden>
+      <p class="kind">Nggak apa-apa kok, kamu nggak harus jawab sekarang. Makasih udah mau baca sampai sini 🤍</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Penutup -->
+<section id="s5">
+  <div class="fl" id="fl" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="thanks rv">Makasih udah meluangkan waktu buat baca sampai akhir.</p>
+    <p class="bye rv" data-d="1.6">Semoga hari kamu selalu punya alasan buat tersenyum. 🤍</p>
+    <p class="from rv" data-d="3" id="fromLine"></p>
+    <button class="btn again rv" data-d="3.4" id="again" type="button">Baca lagi ↻</button>
+  </div>
+</section>
+
+<script>
+/* =========================================================
+   ✏️ KONFIGURASI — UBAH BAGIAN INI SAJA
+   ========================================================= */
+const CONFIG = {
+  recipient: "Kamu",                 // nama penerima
+  sender: "Aku",                     // nama pengirim
+  pageTitle: "Hei Kamuuu!",          // judul halaman (tab browser) & judul besar
+  accent: "#ffb6d0",                 // warna utama (pink pastel)
+  background: "",                    // URL foto background (mis. pohon kelapa malam hari). Kosong = pakai langit malam bawaan
+  characterImage: "",                // URL ilustrasi karakter. Kosong = pakai karakter bawaan
+  message: [                         // isi surat, 1 teks = 1 paragraf
+    "Aku nggak tahu kamu bakal gimana setelah baca ini, tapi aku pengen jujur tentang apa yang aku rasain.",
+    "Aku seneng bisa kenal kamu. Ada hal sederhana dari kamu yang bikin aku inget terus, bahkan saat kita nggak lagi ngobrol.",
+    "Aku nggak nulis ini buat maksa kamu ngerasain hal yang sama. Aku cuma pengen kamu tahu apa yang selama ini susah aku ungkapin secara langsung.",
+    "Apa pun jawaban kamu nanti, aku bakal tetap menghargai perasaan dan pilihan kamu."
+  ]
+};
+/* ========================================================= */
+
+const $ = s => document.querySelector(s);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* Setup */
+document.title = CONFIG.pageTitle;
+$("#hTitle").textContent = CONFIG.pageTitle;
+document.documentElement.style.setProperty("--accent", CONFIG.accent);
+$("#toLine").textContent = "Untuk " + CONFIG.recipient;
+$("#fromLine").textContent = "— " + CONFIG.sender;
+CONFIG.message.forEach(t => {
+  const p = document.createElement("p");
+  p.className = "rv"; p.textContent = t;
+  $("#letter").appendChild(p);
+});
+
+if (CONFIG.background) {
+  const im = new Image();
+  im.onload = () => { const p = $("#photo"); p.style.backgroundImage = 'url("' + CONFIG.background + '")'; p.classList.add("ok"); };
+  im.src = CONFIG.background;
+}
+if (CONFIG.characterImage) {
+  const im = new Image();
+  im.alt = "";
+  im.onload = () => { const c = $("#char"); c.innerHTML = ""; c.appendChild(im); };
+  im.src = CONFIG.characterImage;
+}
+
+/* Bintang */
+const stars = $("#stars");
+for (let i = 0; i < 38; i++) {
+  const s = document.createElement("span");
+  s.style.left = Math.random() * 100 + "%";
+  s.style.top = Math.random() * 72 + "%";
+  const z = 2 + Math.random() * 2.5;
+  s.style.width = s.style.height = z + "px";
+  s.style.animationDelay = (-Math.random() * 4) + "s";
+  s.style.animationDuration = (2.8 + Math.random() * 3) + "s";
+  stars.appendChild(s);
+}
+
+/* Hati melayang di penutup */
+const fl = $("#fl");
+["♥", "✦", "♥", "♡", "✦"].forEach((c, k) => {
+  for (let i = 0; i < 3; i++) {
+    const s = document.createElement("span");
+    s.textContent = c;
+    s.style.left = Math.random() * 94 + "%";
+    s.style.fontSize = (14 + Math.random() * 16) + "px";
+    s.style.animationDuration = (10 + Math.random() * 8) + "s";
+    s.style.animationDelay = (-Math.random() * 14) + "s";
+    s.style.setProperty("--dx", (Math.random() * 70 - 35) + "px");
+    fl.appendChild(s);
+  }
+});
+
+/* Muncul saat di-scroll */
+const io = new IntersectionObserver(es => {
+  es.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    el.style.transitionDelay = (el.dataset.d || 0) + "s";
+    el.classList.add("in");
+    io.unobserve(el);
+  });
+}, { threshold: .35 });
+document.querySelectorAll(".rv").forEach(el => io.observe(el));
+
+/* Parallax ringan */
+const palms = $("#palms"), photo = $("#photo");
+if (!reduce) {
+  let tick = false;
+  addEventListener("scroll", () => {
+    if (tick) return; tick = true;
+    requestAnimationFrame(() => {
+      const y = scrollY;
+      palms.style.transform = "translate3d(0," + Math.min(y * .06, 90) + "px,0)";
+      photo.style.transform = "translate3d(0," + (y * -.03) + "px,0)";
+      tick = false;
+    });
+  }, { passive: true });
+}
+
+/* Tombol */
+const go = (el, top) => top ? scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" }) : el.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+$("#down").addEventListener("click", () => go($("#s2")));
+$("#again").addEventListener("click", () => {
+  go(null, true);
+  setTimeout(() => {
+    $("#replyBox").hidden = true; $("#thinkBox").hidden = true; $("#reply").value = ""; $("#status").textContent = "";
+  }, 700);
+});
+
+$("#yes").addEventListener("click", () => {
+  $("#thinkBox").hidden = true; $("#replyBox").hidden = false;
+  setTimeout(() => { $("#reply").focus({ preventScroll: true }); $("#replyBox").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" }); }, 120);
+});
+$("#think").addEventListener("click", () => {
+  $("#replyBox").hidden = true; $("#thinkBox").hidden = false;
+  $("#thinkBox").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+});
+
+/* Salin balasan */
+$("#copy").addEventListener("click", async () => {
+  const st = $("#status"), box = $("#reply"), txt = box.value.trim();
+  if (!txt) { st.textContent = "Tulis dulu balasannya ya 🌷"; box.focus(); return; }
+  const full = "Balasan dari " + CONFIG.recipient + " untuk " + CONFIG.sender + ":\n\n" + txt;
+  let ok = false;
+  try { await navigator.clipboard.writeText(full); ok = true; }
+  catch (e) {
+    const t = document.createElement("textarea");
+    t.value = full; t.style.cssText = "position:fixed;opacity:0"; document.body.appendChild(t);
+    t.select(); try { ok = document.execCommand("copy"); } catch (_) {} t.remove();
+  }
+  st.textContent = ok ? "Tersalin ✓ Kirim sendiri ya 💗" : "Gagal menyalin. Blok teksnya lalu salin manual ya.";
+});
+</script>
+</body>
+</html>
